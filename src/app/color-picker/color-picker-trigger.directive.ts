@@ -19,10 +19,21 @@ export class ColorPickerTriggerDirective {
               private viewContainerRef: ViewContainerRef) { }
 
   private init() {
+    const positionStrategy = this.overlay
+      .position()
+      .flexibleConnectedTo(this.elementRef)
+      .withPositions([{
+        originX: 'start',
+        originY: 'bottom',
+        overlayX: 'start',
+        overlayY: 'top'
+      }]);
+
     const overlayConfig = new OverlayConfig({
       maxWidth: 250,
       hasBackdrop: true,
-      backdropClass: 'cdk-overlay-transparent-backdrop'
+      backdropClass: 'cdk-overlay-transparent-backdrop',
+      positionStrategy
     });
 
     this._overlayRef = this.overlay.create(overlayConfig);
