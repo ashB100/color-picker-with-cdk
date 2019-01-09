@@ -7,6 +7,9 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  // This will ensure that the animation starts from the top
+  // left edge of the color picker, rather than from its center.
+  transform-origin: left top;
 }
 
 .color {
